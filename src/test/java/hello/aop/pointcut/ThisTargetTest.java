@@ -27,9 +27,18 @@ public class ThisTargetTest {
     @Slf4j
     @Aspect
     static class ThisTargetAspect {
-        @Around("this(hello.app.member.MemberService)")
-        public Object doThisInterface(ProceedingJoinPoint joinPoint) throws Throwable {
-            log.info("[this-interface] {}", joinPoint.getSignature());
+
+        //부모 타입 허용
+        @Around("target(hello.aop.member.MemberService)")
+        public Object doTargetInterface(ProceedingJoinPoint joinPoint) throws Throwable {
+            log.info("[target-interface] {}", joinPoint.getSignature());
+            return joinPoint.proceed();
+        }
+
+        //부모 타입 허용
+        @Around("target(hello.aop.member.MemberServiceImpl)")
+        public Object doTargetImpl(ProceedingJoinPoint joinPoint) throws Throwable {
+            log.info("[target-impl] {}", joinPoint.getSignature());
             return joinPoint.proceed();
         }
     }

@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Import;
 @Slf4j
 @Import(AtAnnotationTest.AtAnnotationAspect.class)
 @SpringBootTest
-public class AtAnnotationTest {
+public class
+
+AtAnnotationTest {
 
     @Autowired
     MemberService memberService;
